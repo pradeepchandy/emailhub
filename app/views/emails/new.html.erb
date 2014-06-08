@@ -1,0 +1,85 @@
+
+<div class="page-header">
+  <h1>Request Email</h1>
+</div>
+
+<% if @email.errors.any? %>
+  <% @email.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<form action="/create_email" class="form-horizontal">
+  <!-- Label and input for objective -->
+  <div class="form-group">
+    <label for="objective" class="col-sm-2 control-label">
+      Objective
+    </label>
+    <div class="col-sm-10">
+      <textarea id="objective" name="objective" placeholder="What's the purpose of this email" class="form-control" rows="3"><%= @email.objective %></textarea>
+    </div>
+  </div>
+
+  <!-- Label and input for recipient_name -->
+  <div class="form-group">
+    <label for="recipient_name" class="col-sm-2 control-label">
+      Recipient name
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="recipient_name" name="recipient_name" placeholder="Who is it intended for?" class="form-control" value="<%= @email.recipient_name %>">
+    </div>
+  </div>
+
+
+  <!-- Label and input for call_to_action -->
+  <div class="form-group">
+    <label for="call_to_action" class="col-sm-2 control-label">
+      Call to action
+    </label>
+    <div class="col-sm-10">
+      <textarea id="call_to_action" name="call_to_action" placeholder="What action do you want the recepient to take?" class="form-control" rows="3"><%= @email.call_to_action %></textarea>
+    </div>
+  </div>
+
+   <!-- Label and input for deadline -->
+  <div class="form-group">
+    <label for="deadline" class="col-sm-2 control-label">
+      Deadline
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="deadline" name="deadline" placeholder="Complete action by" class="form-control" ><%= @email.deadline %> </input>
+
+    </div>
+  </div>
+
+
+  <!-- Label and input for email_type -->
+  <div class="form-group">
+    <label for="email_type" class="col-sm-2 control-label">
+      Email type
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="email_type" name="email_type" placeholder="Is this request related to business or personal reasons?" class="form-control" value="<%= @email.email_type %>">
+    </div>
+  </div>
+
+
+
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" value="Create Request for Email" class="btn btn-primary">
+    </div>
+  </div>
+
+</form>
+
+ <script src= "http://code.jquery.com/ui/1.10.4/jquery-ui.min.js" ></script>
+<script type='text/javascript'>
+jQuery('#deadline').datepicker();
+</script>

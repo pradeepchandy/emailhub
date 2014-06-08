@@ -1,0 +1,107 @@
+<div class="page-header">
+  <h1>Emails</h1>
+</div>
+
+<% if current_user.type == '0' %>
+<p><a href="/emails/new" class="btn btn-primary">Request a New Email</a></p>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Objective</th>
+      <th>Deadline</th>
+      <th>Call to action</th>
+      <th>Email type</th>
+      <th>Recipient name</th>
+      <th>Request Status</th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.objective %></td>
+        <td> <%= email.deadline.to_date.to_formatted_s(:rfc822)  %></td>
+        <td><%= email.call_to_action %></td>
+        <td><%= email.email_type %></td>
+        <td><%= email.recipient_name %></td>
+
+<% if email.supplier_id == 0 %>
+
+         <td>
+          <a href="/emails/<%= email.id %>" class="btn btn-primary">
+         In progress</a>
+
+          <a href="/delete_email/<%= email.id %>" class="btn btn-danger"> Delete request</a>
+        </td>
+
+
+<% else %>
+        <td>
+          <a href="/emails/<%= email.id %>" class="btn btn-success">
+                      Request complete - Click here
+          </a>
+        </td>
+       <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Objective</th>
+      <th>Deadline</th>
+      <th>Call to action</th>
+      <th>Email type</th>
+      <th>Recipient name</th>
+      <th>Subject</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.objective %></td>
+      <td> <%= email.deadline.to_date.to_formatted_s(:rfc822)  %></td>
+        <td><%= email.call_to_action %></td>
+        <td><%= email.email_type %></td>
+        <td><%= email.recipient_name %></td>
+        <td><%= email.subject %></td>
+        <td><%= email.body %></td>
+
+
+        <% if email.supplier_id != 0 %>
+
+          <td>
+          <a href="/emails/<%= email.id %>" class="btn btn-success">
+                      This email is fulfilled
+          </a>
+        </td>
+
+<% else %>
+        <td>
+             <a href="/emails/<%= email.id%>/edit" class="btn btn-primary">
+         Fulfill this email request
+          </a>
+        <td>
+
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
