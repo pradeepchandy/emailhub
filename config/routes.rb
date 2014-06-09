@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'emails#index'
 
+# Routes for the how it works
+get('/emails/how', { :controller => 'emails', :action => 'how' })
+
   # Routes for the user resource:
 get('/users', { :controller => 'users', :action => 'index' })
 

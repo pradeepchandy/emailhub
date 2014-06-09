@@ -65,4 +65,9 @@ class EmailsController < ApplicationController
 
     redirect_to "/emails", :notice => "Email deleted."
   end
+
+  def how
+  end
+
 end
+
