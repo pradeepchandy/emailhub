@@ -16,6 +16,8 @@ def configure_permitted_parameters
   devise_parameter_sanitizer.for(:account_update) << :avatar_url
 end
 
-before_action :authenticate_user!
+before_action :authenticate_user!, except: [:how]
+
+
 end
 
