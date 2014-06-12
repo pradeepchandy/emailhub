@@ -31,6 +31,7 @@
 </dl>
 
 
+
 <form action="/update_email/<%= @email.id %>" class="form-horizontal">
 
   <!-- Label and input for subject -->
@@ -39,7 +40,7 @@
       Subject
     </label>
     <div class="col-sm-10">
-      <textarea id="subject" name="subject" placeholder="Subject" class="form-control" rows="3"><%= @email.subject %></textarea>
+      <textarea id="subject" name="subject" placeholder="Subject" class="form-control" rows="1"><%= @email.subject %></textarea>
     </div>
   </div>
 
@@ -49,7 +50,7 @@
       Body
     </label>
     <div class="col-sm-10">
-      <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @email.body %></textarea>
+      <textarea id="body" name="body" placeholder="Body" class="form-control" rows="8"><%= @email.body %></textarea>
     </div>
   </div>
 
@@ -61,8 +62,4 @@
   </div>
 
 </form>
-
-
-
-
 
